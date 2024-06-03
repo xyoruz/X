@@ -19,7 +19,7 @@
 - PERJUAL BELIKAN
 ```
 
-![This is an image](https://github.com/xyoruz/X/blob/main/XYR.jpg)
+![This is an image](https://github.com/xyoruz/X/blob/main/[FREE - HDconvert.com] Screenshot_20240604_044229.jpg
 
 ### DONASI SEIHLAS  NYA
 ### DANA🎉
