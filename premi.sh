@@ -88,7 +88,7 @@ gem install lolcat
 apt install wondershaper -y
 clear
 # REPO    
-    REPO="https://raw.githubusercontent.com/Xyr3760/tunnel/main/"
+    REPO="https://raw.githubusercontent.com/xyoru/X/main/"
 
 ####
 start=$(date +%s)
@@ -275,7 +275,6 @@ curl "ipinfo.io/city?token=7a814b6263b02c" > /root/.city
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m" 
 clear
-izinsc="https://raw.githubusercontent.com/Tomketstore/izin/main/ip"
 # USERNAME
 rm -f /usr/bin/user
 username=$(curl $izinsc | grep $MYIP | awk '{print $2}')
@@ -311,8 +310,8 @@ else
 sts="${Error}"
 fi
 TIMES="10"
-CHATID="--1002133198810"
-KEY="6439154959:AAGVPEv_3QJO6qT07tLkcKMyzTSOyWxssXk"
+CHATID="6777318112"
+KEY="7077912626:AAHDkEMHuB9UBkNGGNeBv2R1ZI0amQVF11Y"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /root/.isp)
 CITY=$(cat /root/.city)
@@ -328,7 +327,7 @@ TIMEZONE=$(printf '%(%H:%M:%S)T')
 <code>Time     :</code><code>$TIMEZONE</code>
 <code>Exp Sc.  :</code><code>$exp</code>
 <code>────────────────────</code>
-<b> TOMKET VPN STORE SCRIPT  </b>
+<b> XYR VPN STORE SCRIPT  </b>
 <code>────────────────────</code>
 <i>Automatic Notifications From Github</i>
 "'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"t.me/ohmyvillain"}]]}' 
