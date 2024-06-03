@@ -9,6 +9,8 @@
 <p align="center"><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2010&message=Buster&color=purple">  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2020&message=Lts&color=red">
 </p>
 
+### INSTAL LANGSUNG TANPA IZIN IP🔥
+
 ![This is an image](https://github.com/xyoruz/X/blob/main/XYR.jpg)
 
 ### DONASI SEIHLAS  NYA
