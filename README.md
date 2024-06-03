@@ -1,3 +1,9 @@
+<p align="center"><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2010&message=Buster&color=purple">  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2020&message=Lts&color=red">
+</p>
+
+![This is an image](https://github.com/Xyoru020/vip/blob/main/IMG_20240521_155115.jpg)
+
+
 <p align="center">
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=S+C+R+I+P+T+ㅤBYㅤ+XYORUZ+S+T+O+R+E" />
 </p>
