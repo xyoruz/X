@@ -10,8 +10,10 @@
 </p>
 
 ### SEKEDAR INFI BROQU
-```INSTAL LANGSUNG TANPA IZIN IP🔥
-OKOK BROQU SIAP🔥🔥
+```
+- INSTALL LANGSUNG TANPA IZIN IP
+- OK BROQU SCRIPT INI FREE
+- TIDAK BOLEH DI PERJUAL BELIKAN
 ```
 
 ![This is an image](https://github.com/xyoruz/X/blob/main/XYR.jpg)
