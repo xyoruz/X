@@ -9,11 +9,14 @@
 <p align="center"><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2010&message=Buster&color=purple">  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2020&message=Lts&color=red">
 </p>
 
-### SEKEDAR INFI BROQU
+### SEKEDAR INFO BROQU
 ```
-- INSTALL LANGSUNG TANPA IZIN IP
-- OK BROQU SCRIPT INI FREE
-- TIDAK BOLEH DI PERJUAL BELIKAN
+- INSTALL LANGSUNG
+- TANPA IZIN IP
+- OK BROQU
+- SCRIPT INI FREE
+- TIDAK BOLEH DI
+- PERJUAL BELIKAN
 ```
 
 ![This is an image](https://github.com/xyoruz/X/blob/main/XYR.jpg)
