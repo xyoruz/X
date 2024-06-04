@@ -9,6 +9,13 @@
 <p align="center"><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2010&message=Buster&color=purple">  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2020&message=Lts&color=red">
 </p>
 
+### WARNING⚠️
+```
+ADA KENDALA ATAU EROR
+SCRIPT BISA HUBUNGI
+TELEGRAM SAYA @XYR020
+```
+
 ### SEKEDAR INFO BROQU
 ```
 - INSTALL LANGSUNG
@@ -21,12 +28,6 @@
 
 ![This is an image](https://github.com/xyoruz/X/blob/main/Screenshot_20240604_190108.jpg)
 
-### WARNING⚠️
-```
-ADA KENDALA ATAU EROR
-SCRIPT BISA HUBUNGI
-TELEGRAM SAYA @XYR020
-```
 ### INSTALL SCRIPT 
 ```
 apt install -y && apt update -y && apt upgrade -y && wget -q https://raw.githubusercontent.com/xyoruz/X/main/premi.sh && chmod +x premi.sh && ./premi.sh
