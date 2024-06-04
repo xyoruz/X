@@ -19,7 +19,7 @@
 - PERJUAL BELIKAN
 ```
 
-![This is an image](https://github.com/xyoruz/X/blob/main/Asu.jpg)
+![This is an image](https://github.com/xyoruz/X/blob/main/Screenshot_20240604_190108.jpg)
 
 ### DONASI SEIHLAS  NYA
 ### DANA🎉
