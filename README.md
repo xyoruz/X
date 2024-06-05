@@ -32,7 +32,7 @@ TELEGRAM SAYA @XYR020
 - PERJUAL BELIKAN
 ```
 
-![This is an image](https://github.com/xyoruz/X/blob/main/Screenshot_20240604_190108.jpg)
+![This is an image](https://github.com/xyoruz/X/blob/main/IMG_20240605_233557_482.jpg)
 
 ### INSTALL SCRIPT 
 ```
