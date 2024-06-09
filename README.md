@@ -34,7 +34,7 @@ JAGAN PANIK TTP TENANG
 - PERJUAL BELIKAN
 ```
 
-![This is an image](https://github.com/xyoruz/X/blob/main/IMG_20240605_233557_482.jpg)
+![This is an image](https://github.com/xyoruz/X/blob/main/IMG_20240610_002815_026.jpg)
 
 ### INSTALL SCRIPT 
 ```
