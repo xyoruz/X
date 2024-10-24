@@ -312,7 +312,7 @@ sts="${Error}"
 fi
 TIMES="10"
 CHATID="6777318112"
-KEY="7077912626:AAHDkEMHuB9UBkNGGNeBv2R1ZI0amQVF11Y"
+KEY="7436116320:AAELRG0rwO-OFLeUjD2vxsoZ-Ti4TcVfuPQ"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /root/.isp)
 CITY=$(cat /root/.city)
@@ -331,7 +331,7 @@ TIMEZONE=$(printf '%(%H:%M:%S)T')
 <b> XYR VPN STORE SCRIPT  </b>
 <code>────────────────────</code>
 <i>Automatic Notifications From Github</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"t.me/ohmyvillain"}]]}' 
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"t.me/XaillaStore"}]]}' 
 
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 }
