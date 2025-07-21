@@ -1,11 +1,20 @@
 [Unit]
 Description=Limit Usage Xray Service
 After=syslog.target network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
 
 [Service]
 User=root
 NoNewPrivileges=true
 ExecStart=/etc/xray/limit.vmess
+Restart=on-failure
+RestartSec=5s
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=limitvmess
+ProtectSystem=strict
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
