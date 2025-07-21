@@ -2,11 +2,20 @@
 Description=Limit Usage Xray Service
 Documentation=FighterTunnel
 After=syslog.target network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
 
 [Service]
 User=root
 NoNewPrivileges=true
 ExecStart=/etc/xray/limit.trojan
+Restart=on-failure
+RestartSec=5s
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=limittrojan
+ProtectSystem=strict
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
