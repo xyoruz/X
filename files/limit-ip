@@ -1,104 +1,125 @@
 #!/bin/bash
 
 function send_log(){
-CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
-KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
-TIME="10"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
-TEXT="
+    CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+    KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+    TIME="10"
+    URL="https://api.telegram.org/bot$KEY/sendMessage"
+    TEXT="
 <code>────────────────────</code>
 <b>⚠️ NOTIFICATIONS MULTI LOGIN ⚠️</b>
 <code>────────────────────</code>
 <code>Username  : </code><code>$user</code>
 <code>Limit Ip    : </code><code>$iplimit</code>
+<code>Total Ip    : </code><code>$cekcek</code>
 <code>────────────────────</code>
 "
-curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+    curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 }
+
+function get_active_ips() {
+    local user=$1
+    local protocol=$2
+    
+    # Menggunakan ss untuk mendapatkan IP aktif yang terhubung ke port Xray
+    case $protocol in
+        vmess)
+            port=443
+            ;;
+        vless)
+            port=8443
+            ;;
+        trojan)
+            port=2083
+            ;;
+        *)
+            port=443
+            ;;
+    esac
+    
+    # Mendapatkan IP aktif yang terhubung ke port tertentu untuk user tertentu
+    ss -tn state established | grep ":$port" | awk '{print $5}' | cut -d: -f1 | sort | uniq | while read ip; do
+        # Verifikasi bahwa IP ini memang menggunakan akun user tersebut
+        grep "$user" /var/log/xray/access.log | grep "$ip" >/dev/null && echo "$ip"
+    done | sort | uniq | wc -l
+}
+
 function vmip(){
-#LIMITVMESSIP
-echo -n > /var/log/xray/access.log
-sleep 1
-data=( `ls /etc/kyt/limit/vmess/ip`);
-#Decrypted By YADDY D PHREAKER
+    data=( $(ls /etc/kyt/limit/vmess/ip 2>/dev/null) )
+    
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/kyt/limit/vmess/ip/$user)
-        ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
-        cekcek=$(echo -e "$ehh" | wc -l);
+        iplimit=$(cat /etc/kyt/limit/vmess/ip/$user 2>/dev/null)
+        [ -z "$iplimit" ] && continue
+        
+        cekcek=$(get_active_ips "$user" "vmess")
+        
         if [[ $cekcek -gt $iplimit ]]; then
             exp=$(grep -w "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-                  sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
-                  sed -i "/^### $user $exp/d" /etc/vmess/.vmess.db
-                  systemctl restart xray >> /dev/null 2>&1
-                  jum2=$(cat /tmp/ipvmess.txt | wc -l)
-                  rm -rf /etc/kyt/limit/vmess/ip/$user
-                  send_log
-                else
-            echo ""
+            if [ -n "$exp" ]; then
+                sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
+                sed -i "/^### $user $exp/d" /etc/vmess/.vmess.db
+                systemctl restart xray >/dev/null 2>&1
+                rm -rf /etc/kyt/limit/vmess/ip/$user
+                send_log
+            fi
         fi
         sleep 0.1
     done
 }
+
 function vlip(){
-#LIMITVLESSIP
-echo -n > /var/log/xray/access.log
-sleep 1
-data=( `ls /etc/kyt/limit/vless/ip`);
-#Decrypted By YADDY D PHREAKER
+    data=( $(ls /etc/kyt/limit/vless/ip 2>/dev/null) )
+    
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/kyt/limit/vless/ip/$user)
-        ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
-        cekcek=$(echo -e "$ehh" | wc -l);
+        iplimit=$(cat /etc/kyt/limit/vless/ip/$user 2>/dev/null)
+        [ -z "$iplimit" ] && continue
+        
+        cekcek=$(get_active_ips "$user" "vless")
+        
         if [[ $cekcek -gt $iplimit ]]; then
             exp=$(grep -w "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-                  sed -i "/^#& $user $exp/,/^},{/d" /etc/xray/config.json
-                  sed -i "/^### $user $exp/d" /etc/vless/.vless.db
-                  systemctl restart xray >> /dev/null 2>&1
-                  jum2=$(cat /tmp/ipvless.txt | wc -l)
-                  rm -rf /etc/kyt/limit/vless/ip/$user
-                  send_log
-                else
-            echo ""
+            if [ -n "$exp" ]; then
+                sed -i "/^#& $user $exp/,/^},{/d" /etc/xray/config.json
+                sed -i "/^### $user $exp/d" /etc/vless/.vless.db
+                systemctl restart xray >/dev/null 2>&1
+                rm -rf /etc/kyt/limit/vless/ip/$user
+                send_log
+            fi
         fi
         sleep 0.1
     done
 }
+
 function trip(){
-#LIMITIPTROJAN
-echo -n > /var/log/xray/access.log
-sleep 1
-data=( `ls /etc/kyt/limit/trojan/ip`);
-#Decrypted By YADDY D PHREAKER
+    data=( $(ls /etc/kyt/limit/trojan/ip 2>/dev/null) )
+    
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/kyt/limit/trojan/ip/$user)
-        ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
-        cekcek=$(echo -e "$ehh" | wc -l);
+        iplimit=$(cat /etc/kyt/limit/trojan/ip/$user 2>/dev/null)
+        [ -z "$iplimit" ] && continue
+        
+        cekcek=$(get_active_ips "$user" "trojan")
+        
         if [[ $cekcek -gt $iplimit ]]; then
             exp=$(grep -w "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-                  sed -i "/^#! $user $exp/,/^},{/d" /etc/xray/config.json
-                  sed -i "/^### $user $exp/d" /etc/trojan/.trojan.db
-                  systemctl restart xray >> /dev/null 2>&1
-                  jum2=$(cat /tmp/iptrojan.txt | wc -l)
-                  rm -rf /etc/kyt/limit/trojan/ip/$user
-                  send_log
-                else
-            echo ""
+            if [ -n "$exp" ]; then
+                sed -i "/^#! $user $exp/,/^},{/d" /etc/xray/config.json
+                sed -i "/^### $user $exp/d" /etc/trojan/.trojan.db
+                systemctl restart xray >/dev/null 2>&1
+                rm -rf /etc/kyt/limit/trojan/ip/$user
+                send_log
+            fi
         fi
         sleep 0.1
     done
 }
 
 if [[ ${1} == "vmip" ]]; then
-vmip
+    vmip
 elif [[ ${1} == "vlip" ]]; then
-vlip
+    vlip
 elif [[ ${1} == "trip" ]]; then
-trip
+    trip
 fi
-
-
-
-
